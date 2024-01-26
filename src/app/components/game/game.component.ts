@@ -19,7 +19,6 @@ export class GameComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.gameId);
     this.httpStoreService.getGameById(this.gameId).subscribe((game) => {
       this.game = this.storeService.getMappedGame(game);
     });

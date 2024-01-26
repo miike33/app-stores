@@ -13,7 +13,11 @@
     <div class="modal-dialog" *ngIf="showModal(myModal)">
       <div class="modal-content">
         <div class="modal-header justify-content-center">
-          <img [src]="game.images[0]" class="" alt="{{ game.name }}" />
+          <carousel [showIndicators]="false">
+            <slide *ngFor="let image of game.images">
+              <img alt="First slide" class="d-block w-100" [src]="image" />
+            </slide>
+          </carousel>
         </div>
         <div class="modal-body">
           {{ game.name }}
