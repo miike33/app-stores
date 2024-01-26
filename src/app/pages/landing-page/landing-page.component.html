@@ -1,0 +1,7 @@
+<div class="mt-5 mb-5 mr-5 ml-5" *ngIf="storeList">
+  <div class="row">
+    <div class="col-sm" *ngFor="let store of storeList">
+      <store-card [store]="store"></store-card>
+    </div>
+  </div>
+</div>

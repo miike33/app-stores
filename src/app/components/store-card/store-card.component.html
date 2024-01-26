@@ -1,0 +1,18 @@
+<div class="card" style="width: 18rem">
+  <img
+    [routerLink]="['/shop/id/', store.id]"
+    class="card-img-top"
+    [src]="store.image_background"
+    alt="Card image cap"
+  />
+  <div class="card-body" [routerLink]="['/shop/id/', store.id]">
+    <h5 class="card-title">{{ store.name }}</h5>
+    <tr>
+      <td>{{ literals.numGames }} {{ store.games_count }}</td>
+    </tr>
+    <div></div>
+  </div>
+  <a href="{{ store.domain }}" class="btn btn-primary">
+    {{ literals.showWeb }}
+  </a>
+</div>

@@ -1,0 +1,44 @@
+<div *ngIf="game">
+  <!-- MODAL -->
+  <div
+    aria-hidden="true"
+    aria-labelledby="myModalLabel"
+    bsModal
+    class="modal fade modal modal-primary modal"
+    #myModal="bs-modal"
+    id="myModal"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div class="modal-dialog" *ngIf="showModal(myModal)">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <img [src]="game.images[0]" class="" alt="{{ game.name }}" />
+        </div>
+        <div class="modal-body">
+          {{ game.name }}
+          <div class="progress-container progress-primary">
+            <span class="progress-badge"> Rating </span>
+            <progressbar
+              class="progress-bar-primary"
+              [value]="game.rating * 10"
+            >
+              <span class="progress-value"> {{ game.rating }} </span>
+            </progressbar>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-link btn-neutral" type="button"></button>
+          <button
+            class="btn btn-link btn-neutral"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal(myModal)"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
