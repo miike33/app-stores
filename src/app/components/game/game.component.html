@@ -12,7 +12,7 @@
         {{ game.name }}
       </p>
       <p>{{ literals.released }}{{ game.released }}</p>
-      <p class="table-responsive-sm" [innerHTML]="game.description"></p>
+      <p class="scroll-description" [innerHTML]="game.description"></p>
       <div class="progress-container progress-primary">
         <span class="progress-badge"> {{ literals.rating }} </span>
         <progressbar class="progress-bar-primary" [value]="game.rating * 20">
