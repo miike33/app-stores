@@ -15,15 +15,16 @@
           <h1 class="profile-title text-left">
             {{ storeDetails.name }}
           </h1>
-          <h1 class="profile-title text-left">
-            {{ storeDetails.domain }}
-          </h1>
+          <a target="_blank" href="{{ storeDetails.domain }}">
+            <h1 class="profile-title text-left">{{ storeDetails.domain }}</h1>
+          </a>
           <h1 class="profile-title text-lef">
             {{ literals.numGames }}{{ storeDetails.games_count }}
           </h1>
-          <p class="profile-description text-left">
-            {{ storeDetails.description }}
-          </p>
+          <p
+            class="profile-description text-left"
+            [innerHTML]="storeDetails.description"
+          ></p>
         </div>
       </div>
     </div>
@@ -39,13 +40,16 @@
     <tbody>
       <tr *ngFor="let game of getGames()">
         <td class="text-center">{{ game.id }}</td>
-        <td>{{ game.name }}</td>
+        <td data-target="#myModal" (click)="onClickGame(game.id, myModal)">
+          {{ game.name }}
+        </td>
         <td class="td-actions text-center">
           <button
             type="button"
             rel="tooltip"
             class="btn btn-info btn-sm btn-icon"
-            (click)="onClickGame(game.id)"
+            data-target="#myModal"
+            (click)="onClickGame(game.id, myModal)"
           >
             <i class="tim-icons icon-single-02"></i>
           </button>
@@ -55,8 +59,22 @@
   </table>
 </div>
 
-<game
-  *ngIf="showGameModal"
-  [gameId]="selectedGameId"
-  (onCloseModal)="closeModal()"
-></game>
+<!-- MODAL -->
+<div
+  aria-hidden="true"
+  aria-labelledby="myModalLabel"
+  bsModal
+  class="modal fade modal modal-primary modal"
+  #myModal="bs-modal"
+  id="myModal"
+  role="dialog"
+  tabindex="-1"
+>
+  <game
+    *ngIf="showGameModal"
+    data-target="#myModal"
+    [gameId]="selectedGameId"
+    (onCloseModal)="closeModal(myModal)"
+  >
+  </game>
+</div>

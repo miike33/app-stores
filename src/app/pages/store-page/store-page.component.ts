@@ -51,12 +51,14 @@ export class StorePageComponent implements OnInit {
     return games || [];
   }
 
-  public onClickGame(gameId: number): void {
+  public onClickGame(gameId: number, myModal: any): void {
     this.selectedGameId = gameId;
     this.showGameModal = true;
+    myModal.show();
   }
 
-  public closeModal(): void {
+  public closeModal(myModal: any): void {
+    myModal.hide();
     this.showGameModal = false;
   }
 }

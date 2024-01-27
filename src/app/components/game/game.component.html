@@ -1,48 +1,35 @@
-<div *ngIf="game">
-  <!-- MODAL -->
-  <div
-    aria-hidden="true"
-    aria-labelledby="myModalLabel"
-    bsModal
-    class="modal fade modal modal-primary modal"
-    #myModal="bs-modal"
-    id="myModal"
-    role="dialog"
-    tabindex="-1"
-  >
-    <div class="modal-dialog" *ngIf="showModal(myModal)">
-      <div class="modal-content">
-        <div class="modal-header justify-content-center">
-          <carousel [showIndicators]="false">
-            <slide *ngFor="let image of game.images">
-              <img alt="First slide" class="d-block w-100" [src]="image" />
-            </slide>
-          </carousel>
-        </div>
-        <div class="modal-body">
-          {{ game.name }}
-          <div class="progress-container progress-primary">
-            <span class="progress-badge"> Rating </span>
-            <progressbar
-              class="progress-bar-primary"
-              [value]="game.rating * 10"
-            >
-              <span class="progress-value"> {{ game.rating }} </span>
-            </progressbar>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-link btn-neutral" type="button"></button>
-          <button
-            class="btn btn-link btn-neutral"
-            data-dismiss="modal"
-            type="button"
-            (click)="closeModal(myModal)"
-          >
-            Close
-          </button>
-        </div>
+<div *ngIf="game" class="modal-dialog">
+  <div class="modal-content">
+    <div *ngIf="game" class="modal-header justify-content-center">
+      <carousel [showIndicators]="false">
+        <slide *ngFor="let image of game.images">
+          <img alt="First slide" class="d-block w-100" [src]="image" />
+        </slide>
+      </carousel>
+    </div>
+    <div *ngIf="game" class="modal-body">
+      <p>
+        {{ game.name }}
+      </p>
+      <p>{{ literals.released }}{{ game.released }}</p>
+      <p class="table-responsive-sm" [innerHTML]="game.description"></p>
+      <div class="progress-container progress-primary">
+        <span class="progress-badge"> {{ literals.rating }} </span>
+        <progressbar class="progress-bar-primary" [value]="game.rating * 20">
+          <span class="progress-value"> {{ game.rating }} </span>
+        </progressbar>
       </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-link btn-neutral" type="button"></button>
+      <button
+        class="btn btn-link btn-neutral"
+        data-dismiss="modal"
+        type="button"
+        (click)="closeModal()"
+      >
+        {{ literals.close }}
+      </button>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { IGame } from "src/app/models/store.model";
 import { HttpStoreService } from "src/app/services/http-store.service";
 import { StoreService } from "src/app/services/store.service";
+import { GameLiterals } from "../constants/components.constants";
 
 @Component({
   selector: "game",
@@ -9,9 +10,10 @@ import { StoreService } from "src/app/services/store.service";
 })
 export class GameComponent implements OnInit {
   @Input() public gameId!: number;
-  @Output() onCloseModal = new EventEmitter<boolean>();
+  @Output() onCloseModal = new EventEmitter<void>();
 
   public game: IGame;
+  public literals = GameLiterals;
 
   constructor(
     private httpStoreService: HttpStoreService,
@@ -24,15 +26,7 @@ export class GameComponent implements OnInit {
     });
   }
 
-  showModal(myModal): boolean {
-    if (!myModal._isShown) {
-      myModal.show();
-    }
-    return true;
-  }
-
-  closeModal(mymodal): void {
-    mymodal.hide();
-    this.onCloseModal.emit(false);
+  closeModal(): void {
+    this.onCloseModal.emit();
   }
 }
