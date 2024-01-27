@@ -71,10 +71,11 @@
   tabindex="-1"
 >
   <game
-    *ngIf="showGameModal"
+    *ngIf="myModal._isShown"
     data-target="#myModal"
     [gameId]="selectedGameId"
     (onCloseModal)="closeModal(myModal)"
   >
   </game>
 </div>
+<!-- END MODAL -->

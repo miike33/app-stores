@@ -15,7 +15,6 @@ export class StorePageComponent implements OnInit {
   public storeList: IStore[] = [];
   public storeDetails: IStore;
   public selectedGameId: number;
-  public showGameModal: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,12 +52,10 @@ export class StorePageComponent implements OnInit {
 
   public onClickGame(gameId: number, myModal: any): void {
     this.selectedGameId = gameId;
-    this.showGameModal = true;
     myModal.show();
   }
 
   public closeModal(myModal: any): void {
     myModal.hide();
-    this.showGameModal = false;
   }
 }
